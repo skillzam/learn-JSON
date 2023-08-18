@@ -1,0 +1,33 @@
+{
+  "quiz": {
+    "sport": {
+      "q1": {
+        "question": "Q1) Which one is not a Football team in Premier League?",
+        "options": ["Arsenal", "Manchester City", "Liverpool", "Barcelona"],
+        "answer": "Barcelona"
+      },
+      "q2": {
+        "question": "Q2) Which country won the FIFA world cup in the year 2010?",
+        "options": ["Argentina", "Spain", "Brazil", "Germany"],
+        "answer": "Spain"
+      },
+      "q3": {
+        "question": "Q3) Which country hosted the FIFA World cup in the year 2022?",
+        "options": ["Russia", "USA", "Qatar", "South Africa"],
+        "answer": "Qatar"
+      }
+    },
+    "maths": {
+      "q1": {
+        "question": "Q4) Calculate: 5 + 9 = ?",
+        "options": ["10", "11", "14", "13"],
+        "answer": "14"
+      },
+      "q2": {
+        "question": "Q5) Calculate: 10 - 8 = ?",
+        "options": ["1", "2", "3", "4"],
+        "answer": "2"
+      }
+    }
+  }
+}

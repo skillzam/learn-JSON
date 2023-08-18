@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parse JSON file</title>
+</head>
+<body>
+    <h1>Demo: Parsing/Stringify JSON file</h1>
+
+    <p id="para1"></p>
+    <p id="para2"></p>
+    <p id="para3"></p>
+
+    <script>
+
+        const fruitJSON = '{"fruit": "Apple","size": "medium","color": "red"}';
+
+        //Parse the JSON string to JavaScript Objects
+        const jsObject = JSON.parse(fruitJSON);
+        document.getElementById("para1").innerHTML = 
+        `${jsObject.fruit} is ${jsObject.size} in size and ${jsObject.color} in color.`;
+        
+        console.log(jsObject);
+
+        //Convert a JavaScript object into a string with JSON.stringify().
+        const newFruitJSON = JSON.stringify(jsObject);
+        document.getElementById("para2").innerHTML = newFruitJSON;
+
+        //Array String as JSON
+        const footballTeams = '["Arsenal", "Manchester City", "Liverpool", "Barcelona" ]';
+        const teamsArry = JSON.parse(footballTeams);
+        document.getElementById("para3").innerHTML = 
+        teamsArry[0] + '; ' + teamsArry[1] + '; ' + teamsArry[2] + '; ' + teamsArry[3];
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON XHR</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f1f1f1;
+        }
+
+        .container {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 1200px;
+        }
+
+        header {
+            color: white;
+            background-color: #3142A1;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .sports,
+        .maths {
+            background-color: white;
+            box-shadow: 0 4px 16px 0 grey;
+            padding: 16px;
+            margin: 16px;
+            border-radius: 5px;
+        }
+
+        .sports:hover,
+        .maths:hover {
+            box-shadow: 0 4px 16px 0 black;
+        }
+
+        span {
+            color: #3142A1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Demo: Fetching the JSON file with XHR</h1>
+    </header>
+
+    <section class="container">
+        <div class="sports">
+            <h2>Sports Quiz</h2>
+            <hr>
+            <p id="para1"></p>
+            <p id="para2"></p>
+            <button id="btn1">Show Answer</button>
+            <span id="span1"></span>
+            <hr>
+
+            <p id="para3"></p>
+            <p id="para4"></p>
+            <button id="btn2">Show Answer</button>
+            <span id="span2"></span>
+            <hr>
+
+            <p id="para5"></p>
+            <p id="para6"></p>
+            <button id="btn3">Show Answer</button>
+            <span id="span3"></span>
+        </div>
+
+        <div class="maths">
+            <h2>Maths Quiz</h2>
+            <hr>
+            <p id="para7"></p>
+            <p id="para8"></p>
+            <button id="btn4">Show Answer</button>
+            <span id="span4"></span>
+            <hr>
+
+            <p id="para9"></p>
+            <p id="para10"></p>
+            <button id="btn5">Show Answer</button>
+            <span id="span5"></span>
+        </div>
+    </section>
+
+    <script>
+
+        const httpReq = new XMLHttpRequest();
+
+        httpReq.onload = function () {
+            const jsObject = JSON.parse(this.responseText);
+            console.log(jsObject);
+
+            // Question #1 
+
+            document.getElementById("para1").innerHTML =
+                jsObject.quiz.sport.q1.question;
+
+            document.getElementById("para2").innerHTML =
+                `<form>
+                <input type="radio" id="input11" name="q1">
+                <label for="input11">${jsObject.quiz.sport.q1.options[0]}</label> <br>
+                <input type="radio" id="input12" name="q1">
+                <label for="input12">${jsObject.quiz.sport.q1.options[1]}</label> <br>
+                <input type="radio" id="input13" name="q1">
+                <label for="input13">${jsObject.quiz.sport.q1.options[2]}</label> <br>
+                <input type="radio" id="input14" name="q1">
+                <label for="input14">${jsObject.quiz.sport.q1.options[3]}</label>
+            </form>`;
+
+            const button1 = document.getElementById('btn1');
+
+            const spanText1 = document.getElementById("span1");
+
+            button1.addEventListener('click', function () {
+                button1.hidden = true;
+                spanText1.innerHTML =
+                    `Correct answer : <strong>${jsObject.quiz.sport.q1.answer}</strong>`;
+            });
+
+            // Question #2 
+
+            document.getElementById("para3").innerHTML =
+                jsObject.quiz.sport.q2.question;
+
+            document.getElementById("para4").innerHTML =
+                `<form>
+                <input type="radio" id="input21" name="q2">
+                <label for="input21">${jsObject.quiz.sport.q2.options[0]}</label> <br>
+                <input type="radio" id="input22" name="q2">
+                <label for="input22">${jsObject.quiz.sport.q2.options[1]}</label> <br>
+                <input type="radio" id="input23" name="q2">
+                <label for="input23">${jsObject.quiz.sport.q2.options[2]}</label> <br>
+                <input type="radio" id="input24" name="q2">
+                <label for="input24">${jsObject.quiz.sport.q2.options[3]}</label>
+            </form>`;
+
+            const button2 = document.getElementById('btn2');
+
+            const spanText2 = document.getElementById("span2");
+
+            button2.addEventListener('click', function () {
+                button2.hidden = true;
+                spanText2.innerHTML =
+                    `Correct answer : <strong>${jsObject.quiz.sport.q2.answer}</strong>`;
+            });
+
+
+            // Question #3
+
+            document.getElementById("para5").innerHTML =
+                jsObject.quiz.sport.q3.question;
+
+            document.getElementById("para6").innerHTML =
+                `<form>
+                <input type="radio" id="input31" name="q3">
+                <label for="input31">${jsObject.quiz.sport.q3.options[0]}</label> <br>
+                <input type="radio" id="input32" name="q3">
+                <label for="input32">${jsObject.quiz.sport.q3.options[1]}</label> <br>
+                <input type="radio" id="input33" name="q3">
+                <label for="input33">${jsObject.quiz.sport.q3.options[2]}</label> <br>
+                <input type="radio" id="input34" name="q3">
+                <label for="input34">${jsObject.quiz.sport.q3.options[3]}</label>
+            </form>`;
+
+            const button3 = document.getElementById('btn3');
+
+            const spanText3 = document.getElementById("span3");
+
+            button3.addEventListener('click', function () {
+                button3.hidden = true;
+                spanText3.innerHTML =
+                    `Correct answer : <strong>${jsObject.quiz.sport.q3.answer}</strong>`;
+            });
+
+
+            // Question #4
+
+            document.getElementById("para7").innerHTML =
+                jsObject.quiz.maths.q1.question;
+
+            document.getElementById("para8").innerHTML =
+                `<form>
+                <input type="radio" id="input41" name="q4">
+                <label for="input41">${jsObject.quiz.maths.q1.options[0]}</label> <br>
+                <input type="radio" id="input42" name="q4">
+                <label for="input42">${jsObject.quiz.maths.q1.options[1]}</label> <br>
+                <input type="radio" id="input43" name="q4">
+                <label for="input43">${jsObject.quiz.maths.q1.options[2]}</label> <br>
+                <input type="radio" id="input44" name="q4">
+                <label for="input44">${jsObject.quiz.maths.q1.options[3]}</label>
+            </form>`;
+
+            const button4 = document.getElementById('btn4');
+
+            const spanText4 = document.getElementById("span4");
+
+            button4.addEventListener('click', function () {
+                button4.hidden = true;
+                spanText4.innerHTML =
+                    `Correct answer : <strong>${jsObject.quiz.maths.q1.answer}</strong>`;
+            });
+
+
+
+            // Question #5
+
+            document.getElementById("para9").innerHTML =
+                jsObject.quiz.maths.q2.question;
+
+            document.getElementById("para10").innerHTML =
+                `<form>
+                <input type="radio" id="input51" name="q5">
+                <label for="input51">${jsObject.quiz.maths.q2.options[0]}</label> <br>
+                <input type="radio" id="input52" name="q5">
+                <label for="input52">${jsObject.quiz.maths.q2.options[1]}</label> <br>
+                <input type="radio" id="input53" name="q5">
+                <label for="input53">${jsObject.quiz.maths.q2.options[2]}</label> <br>
+                <input type="radio" id="input54" name="q5">
+                <label for="input54">${jsObject.quiz.maths.q2.options[3]}</label>
+            </form>`;
+
+            const button5 = document.getElementById('btn5');
+
+            const spanText5 = document.getElementById("span5");
+
+            button5.addEventListener('click', function () {
+                button5.hidden = true;
+                spanText5.innerHTML =
+                    `Correct answer : <strong>${jsObject.quiz.maths.q2.answer}</strong>`;
+            });
+
+        }
+
+        httpReq.open("GET", "quiz.json");
+        httpReq.send();
+
+    </script>
+
+</body>
+
+</html>
